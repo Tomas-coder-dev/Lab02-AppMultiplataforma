@@ -1,0 +1,42 @@
+class Profesor {
+  String? dni;
+  String? nombre;
+  double? sueldoBruto;
+
+  Profesor(this.dni, this.nombre);
+
+  Profesor.sueldo(this.sueldoBruto);
+
+
+
+  @override
+  String toString() {
+    return 'DNI: $dni, Nombre: $nombre, Sueldo Bruto: $sueldoBruto';
+  }
+
+  double calcularSueldoNeto() {
+    return sueldoBruto != null ? sueldoBruto! * 0.92 : 0.0;
+  }
+}
+
+void main() {
+
+  
+  Profesor profesor1 = Profesor("87654321", "Jaime Gómez");
+  profesor1.sueldoBruto = 3000;
+
+  Profesor profesor2 = Profesor.sueldo(5000);
+  profesor2.dni = "12345678";
+  profesor2.nombre = " Teobaldo Diaz ";
+
+  // Imprimir resultados siguiendo el orden:
+  print(profesor1.toString());
+  print(
+    "Sueldo Neto de ${profesor1.nombre}: ${profesor1.calcularSueldoNeto()}",
+  );
+
+  print(profesor2.toString());
+  print(
+    "Sueldo Neto de ${profesor2.nombre}: ${profesor2.calcularSueldoNeto()}",
+  );
+}
